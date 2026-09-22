@@ -1,4 +1,4 @@
-# Wayfarer Tours
+# GoAvir
 
 A Next.js App Router starter for domestic, inbound, and outbound small-group journeys.
 
