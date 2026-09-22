@@ -1,0 +1,21 @@
+import SimplePageHeader from "../components/SimplePageHeader";
+
+const strengths = [
+  ["Group Travel, Made Better", "Meet like-minded travellers and explore destinations together through curated group trips."],
+  ["Personalized Experiences", "Itineraries can be shaped around your interests, preferences, and travel expectations."],
+  ["Affordable Travel", "Thoughtfully planned trips and competitive pricing make great travel more accessible."],
+  ["Local Expertise", "Our understanding of destinations helps you experience places beyond the typical checklist."],
+  ["Experienced Team", "From planning to travelling, our team is focused on making your journey smooth and enjoyable."],
+  ["24/7 Travel Support", "We are available around the clock to assist you throughout your journey."],
+];
+
+export default function AboutPage() {
+  return (
+    <main className="min-h-screen bg-[#f5f2eb] text-[#1d2731]">
+      <SimplePageHeader />
+      <section className="relative overflow-hidden bg-[#12283d] px-6 py-24 text-white lg:px-10 lg:py-36"><div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=85')] bg-cover bg-center opacity-30" /><div className="relative mx-auto max-w-[1280px]"><p className="text-xs font-bold uppercase tracking-[.22em] text-[#f4e7c4]">About Wayfarer</p><h1 className="serif mt-4 max-w-[800px] text-6xl leading-[.95] tracking-[-.04em] md:text-8xl">Travel beyond places. Experience more.</h1></div></section>
+      <section className="mx-auto max-w-[1100px] px-6 py-20 lg:px-10 lg:py-28"><div className="max-w-[800px]"><p className="text-lg leading-8 text-[#53616d]">At <strong>Wayfarer</strong>, we believe travel is more than simply visiting a destination. It is about the people you meet, the experiences you collect, and the memories you bring back.</p><p className="mt-5 text-lg leading-8 text-[#53616d]">We offer international and domestic group trips designed for travellers who want to explore the world without the stress of planning everything themselves. We make travel simple, comfortable, memorable, and accessible.</p></div><div className="mt-20"><p className="text-xs font-bold uppercase tracking-[.2em] text-[#b98b42]">What we do</p><h2 className="serif mt-3 text-5xl text-[#12283d]">Journeys with more meaning.</h2><div className="mt-10 grid gap-6 md:grid-cols-3"><article className="bg-white p-7"><h3 className="serif text-3xl text-[#12283d]">International Trips</h3><p className="mt-3 text-sm leading-6 text-[#687570]">Explore exciting destinations through carefully planned group trips and comfortable itineraries.</p></article><article className="bg-white p-7"><h3 className="serif text-3xl text-[#12283d]">Domestic Trips</h3><p className="mt-3 text-sm leading-6 text-[#687570]">Discover India&apos;s mountains, beaches, heritage, culture, spirituality, and hidden gems.</p></article><article className="bg-white p-7"><h3 className="serif text-3xl text-[#12283d]">India for International Travellers</h3><p className="mt-3 text-sm leading-6 text-[#687570]">Local expertise, thoughtful itineraries, and reliable support for memorable journeys across India.</p></article></div></div></section>
+      <section className="bg-white px-6 py-20 lg:px-10 lg:py-28"><div className="mx-auto max-w-[1100px]"><p className="text-xs font-bold uppercase tracking-[.2em] text-[#b98b42]">Why travel with Wayfarer?</p><div className="mt-8 grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3">{strengths.map(([title, text]) => <div key={title}><h3 className="serif text-3xl text-[#12283d]">{title}</h3><p className="mt-2 text-sm leading-6 text-[#687570]">{text}</p></div>)}</div><div className="mt-20 border-t border-[#e6e2d8] pt-12"><p className="text-xs font-bold uppercase tracking-[.2em] text-[#b98b42]">Our approach</p><p className="serif mt-4 text-4xl text-[#12283d]">Discover → Plan → Travel → Experience → Remember</p><p className="mt-5 max-w-[700px] text-base leading-7 text-[#687570]">From the first idea to the final journey, Wayfarer is here to make travel easier and more enjoyable.</p><a href="/#journeys" className="mt-8 inline-flex rounded-full bg-[#d8b16a] px-6 py-3 text-sm font-bold uppercase tracking-[.12em] text-white">Explore trips</a></div></div></section>
+    </main>
+  );
+}

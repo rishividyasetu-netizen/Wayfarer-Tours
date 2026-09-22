@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TourType {
+  DOMESTIC
+  INBOUND
+  OUTBOUND
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+}
+
+model Tour {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  type        TourType
+  destination String
+  itinerary   String
+  duration    Int
+  price       Int
+  currency    String   @default("INR")
+  images      String[]
+  slots       Int      @default(12)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  bookings    Booking[]
+  reviews     Review[]
+}
+
+model User {
+  id           String    @id @default(cuid())
+  name         String?
+  email        String    @unique
+  passwordHash String?
+  role         UserRole  @default(CUSTOMER)
+  bookings     Booking[]
+  reviews      Review[]
+  createdAt    DateTime  @default(now())
+}
+
+model Booking {
+  id             String        @id @default(cuid())
+  tourId         String
+  userId         String
+  travelersCount Int
+  travelDate     DateTime
+  status         BookingStatus @default(PENDING)
+  paymentRef     String?
+  totalAmount    Int
+  currency       String
+  tour           Tour          @relation(fields: [tourId], references: [id])
+  user           User          @relation(fields: [userId], references: [id])
+  createdAt      DateTime      @default(now())
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  tourId    String
+  userId    String
+  rating    Int
+  comment   String
+  tour      Tour     @relation(fields: [tourId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
